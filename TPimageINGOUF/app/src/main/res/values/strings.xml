@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TPimageINGOUF</string>
+    <string name="load">Load</string>
+    <string name="pathPreview">path to loaded image</string>
+    <string name="horizontal">Horizontal</string>
+    <string name="vertical">Vertical</string>
+</resources>

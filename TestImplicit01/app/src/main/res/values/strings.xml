@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">TestImplicit01</string>
+    <string name="sms">SMS</string>
+    <string name="mms">MMS</string>
+    <string name="call">Call</string>
+    <string name="web">Web</string>
+    <string name="map">Map</string>
+    <string name="phone">Phone number</string>
+    <string name="url">http://example.com</string>
+    <string name="longitude">Longitude</string>
+    <string name="latitude">Latitude</string>
+    <string name="error_noPhoneNumber">No phone number given</string>
+    <string name="error_noUrl">No url given</string>
+    <string name="error_noLongitudeLatitude">No longitude or latitude given</string>
+    <string name="error_latitudeValue">Latitude should be between -90° and 90°</string>
+    <string name="error_longitudeValue">Longitude should be between -180° and 180°</string>
+    <string name="error_urlNoMatch">URL should look like this : http://www.example.com</string>
+    <string name="error_phoneNumberNoMatch">Phone number does not match</string>
+</resources>
