@@ -7,6 +7,10 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,8 +20,6 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private Button loadButton;
-    private Button vertical;
-    private Button horizontal;
     private TextView textPath;
     private ImageView imageView;
 
@@ -29,8 +31,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         loadButton = findViewById(R.id.buttonLoad);
-        horizontal = findViewById(R.id.horizontaleMirror);
-        vertical = findViewById(R.id.verticalMirror);
         textPath = findViewById(R.id.pathView);
         imageView = findViewById(R.id.imageView);
 
@@ -44,33 +44,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        horizontal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!checkImage())
-                {
-                    Toast.makeText(MainActivity.this,"No image loaded",Toast.LENGTH_SHORT);
-                    return;
-                }
-                Bitmap bm = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
-                Bitmap newBM = getHorizontalMirror(bm);
-                imageView.setImageBitmap(newBM);
-            }
-        });
-
-        vertical.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!checkImage())
-                {
-                    Toast.makeText(MainActivity.this,"No image loaded",Toast.LENGTH_SHORT);
-                    return;
-                }
-                Bitmap bm = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
-                Bitmap newBM = getVerticalMirror(bm);
-                imageView.setImageBitmap(newBM);
-            }
-        });
+        registerForContextMenu(imageView);
     }
 
     @Override
@@ -138,5 +112,61 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.mon_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        switch (id)
+        {
+            case R.id.action_mirror_horizontal:
+                horizontal();
+                break;
+            case R.id.action_mirror_vertical:
+                vertical();
+                break;
+        }
+        return true;
+    }
+
+    private void horizontal()
+    {
+        if(!checkImage())
+        {
+            Toast.makeText(MainActivity.this,"No image loaded",Toast.LENGTH_SHORT);
+            return;
+        }
+        Bitmap bm = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+        Bitmap newBM = getHorizontalMirror(bm);
+        imageView.setImageBitmap(newBM);
+    }
+
+    private void vertical()
+    {
+        if(!checkImage())
+        {
+            Toast.makeText(MainActivity.this,"No image loaded",Toast.LENGTH_SHORT);
+            return;
+        }
+        Bitmap bm = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+        Bitmap newBM = getVerticalMirror(bm);
+        imageView.setImageBitmap(newBM);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.context_menu, menu);
     }
 }

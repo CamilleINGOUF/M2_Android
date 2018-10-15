@@ -4,4 +4,6 @@
     <string name="pathPreview">path to loaded image</string>
     <string name="horizontal">Horizontal</string>
     <string name="vertical">Vertical</string>
+    <string name="inverse_colors">Inverser les couleurs</string>
+    <string name="greyscale">Niveaux de gris</string>
 </resources>
