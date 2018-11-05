@@ -4,4 +4,10 @@
         android:title="@string/inverse_colors"></item>
     <item android:id="@+id/action_greyscale"
         android:title="@string/greyscale"></item>
+    <item android:id="@+id/action_restore"
+        android:title="@string/restore"></item>
+    <item android:id="@+id/greyscale2"
+        android:title="@string/greyscale2"></item>
+    <item android:id="@+id/greyscale3"
+        android:title="@string/greyscale3"></item>
 </menu>

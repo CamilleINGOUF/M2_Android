@@ -4,4 +4,8 @@
         android:title="@string/horizontal"></item>
     <item android:id="@+id/action_mirror_vertical"
         android:title="@string/vertical"></item>
+    <item android:id="@+id/horaire"
+        android:title="@string/horaire"></item>
+    <item android:id="@+id/antihoraire"
+        android:title="@string/antihoraire"></item>
 </menu>

@@ -6,4 +6,9 @@
     <string name="vertical">Vertical</string>
     <string name="inverse_colors">Inverser les couleurs</string>
     <string name="greyscale">Niveaux de gris</string>
+    <string name="restore">Restaurer</string>
+    <string name="greyscale2">Niveau de gris 2</string>
+    <string name="greyscale3">Niveau de gris 3</string>
+    <string name="horaire">+90°</string>
+    <string name="antihoraire">-90°</string>
 </resources>
