@@ -303,6 +303,81 @@ public class MainActivity extends AppCompatActivity {
         imageView.setImageBitmap(image);
     }
 
+    private Bitmap getGreyscale2(Bitmap bm)
+    {
+        int w = bm.getWidth();
+        int h = bm.getHeight();
+
+        Bitmap newBM = Bitmap.createBitmap(w,h,Bitmap.Config.ARGB_8888);
+
+        int color = -66;
+        for(int x = 0; x < w; x++)
+        {
+            for(int y = 0; y < h; y++)
+            {
+                int pixel = bm.getPixel(x,y);
+                int r = Color.red(pixel);
+                int g = Color.green(pixel);
+                int b = Color.blue(pixel);
+                int avg = Math.max(Math.max(r,g),b) + Math.min(Math.min(r,g),b);
+                avg /= 2;
+                color = Color.rgb(avg,avg,avg);
+                newBM.setPixel(x, y, color);
+            }
+        }
+
+        return newBM;
+    }
+
+    private Bitmap getGreyscale3(Bitmap bm)
+    {
+        int w = bm.getWidth();
+        int h = bm.getHeight();
+
+        Bitmap newBM = Bitmap.createBitmap(w,h,Bitmap.Config.ARGB_8888);
+
+        int color = -66;
+        for(int x = 0; x < w; x++)
+        {
+            for(int y = 0; y < h; y++)
+            {
+                int pixel = bm.getPixel(x,y);
+                int r = Color.red(pixel);
+                int g = Color.green(pixel);
+                int b = Color.blue(pixel);
+                int avg = (int)(0.21*r + 0.72*g + 0.07*b);
+                color = Color.rgb(avg,avg,avg);
+                newBM.setPixel(x, y, color);
+            }
+        }
+
+        return newBM;
+    }
+
+    public void greyscale2()
+    {
+        if(!checkImage())
+        {
+            Toast.makeText(MainActivity.this,"No image loaded",Toast.LENGTH_SHORT);
+            return;
+        }
+        Bitmap bm = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+        Bitmap newBM = getGreyscale2(bm);
+        imageView.setImageBitmap(newBM);
+    }
+
+    public void greyscale3()
+    {
+        if(!checkImage())
+        {
+            Toast.makeText(MainActivity.this,"No image loaded",Toast.LENGTH_SHORT);
+            return;
+        }
+        Bitmap bm = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+        Bitmap newBM = getGreyscale3(bm);
+        imageView.setImageBitmap(newBM);
+    }
+
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
@@ -324,8 +399,10 @@ public class MainActivity extends AppCompatActivity {
                 restore();
                 return true;
             case R.id.greyscale2:
+                greyscale2();
                 return true;
             case R.id.greyscale3:
+                greyscale3();
                 return true;
             default:
                 return super.onContextItemSelected(item);
