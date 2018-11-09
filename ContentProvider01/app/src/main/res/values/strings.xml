@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ContentProvider01</string>
+    <string name="test">Search</string>
+    <string name="notFound">No contact</string>
+    <string name="create">Create contact</string>
+    <string name="title_activity_create">CreateActivity</string>
+    <string name="valid">Validate</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone number</string>
+    <string name="cancel">Cancel</string>
+</resources>
